@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<!--Saikeerthi Tsundupalli 
+	OMIS 694
+	April 10, 2018
+	Wire Art by Richard Born
+	-->
+	.
+<head>
+	<title>EL Wire Art by Richard Born</title>
+	<script src="cookies.js"></script>
+	<script>
+	<!--Function to set up the cookie -->
+		function setCookie(value) {
+			var consumerName = document.wishlist.firstname.value;
+			var consumerInfo = consumerName + " | " + value;
+			createCookie("TSWireArt", consumerInfo, (1/96));//creating cookie by passing its arguments 
+			alert(consumerName+", Your Wishlist has been created. Drop by again soon!");
+		}
+
+	</script>
+</head>
+	<body bgcolor="black">
+	<center>
+	<font face="Arial" color="White">
+	<img src="el_wire_logo.gif" alt="EL Wire Art Logo"><br /><br /><br />
+	<h3><div id="offer"></div></h3>
+	<img src="TheTunnel.jpg" alt="The Tunnel">&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="ChicagoSunset.jpg" alt="Chicago Sunset">&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="MountainView.jpg" alt="Mountain View"><br /><br />
+	<img src="OjoDeDios.jpg" alt="Ojo de Dios">&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="Diamond.jpg" alt="Diamond">&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="Sailboat.jpg" alt="Sailboat">&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="Squares.jpg" alt="Squares"><br />
+	<p font="Arial" color="white"> "EL" (Electroluminescent) wire is wire that lights up when supplied with an electric current. Just plug it in, and you are in business. Each of the EL Wire Art images shown above was photographed while the artwork was resting on a table with a semi-reflective surface.  Each of these EL wire art pieces is unique--just one of a kind. Put yourself on a wish list now ...
+	</p>
+	<h3>My wish list:</h3>
+	<form name="wishlist">
+	First name: <input id="firstname" type="text" name="firstname"><br /><br />
+	If I could buy just ONE of the EL Wire Art pieces, I would choose...<br />
+	<p> <input id="art1" type="RADIO" name="choices" onClick="setCookie(this.id + '|' + this.value);" value='The Tunnel | $120 | 8"x16"' checked> 	The Tunnel | $120 | 8" x 16"<br /> 
+		<input id="art2" type="RADIO" name="choices" onClick="setCookie(this.id + '|' + this.value);" value='Chicago Sunset | $150 | 8" x 16"'> 	Chicago Sunset | $150 | 8" x 16"<br /> 
+		<input id="art3" type="RADIO" name="choices" onClick="setCookie(this.id + '|' + this.value);" value='Mountain View | $120 | 8" x 16"'> 	Mountain View | $120 | 8" x 16"<br />
+		<input id="art4" type="RADIO" name="choices" onClick="setCookie(this.id + '|' + this.value);" value='Ojo de Dios | $100 | 6" x 6"'> 		Ojo de Dios | $100 | 6" x 6"<br />
+		<input id="art5" type="RADIO" name="choices" onClick="setCookie(this.id + '|' + this.value);" value='Diamond | $180 | 12" x 12"'> 			Diamond | $180 | 12" x 12"<br />
+		<input id="art6" type="RADIO" name="choices" onClick="setCookie(this.id + '|' + this.value);" value='Sailboat | $120 | 6" x 8"'> 			Sailboat | $120 | 6" x 8"<br />
+		<input id="art7" type="RADIO" name="choices" onClick="setCookie(this.id + '|' + this.value);" value='Squares | $120 | 12" x 12"'> 			Squares | $120 | 12" x 12"
+	</form>	
+	</center>
+	<script>
+	
+		if (getCookie("TSWireArt")) { 
+			var myCustomer = getCookie("TSWireArt");//getting cookie by using getcookie
+			var myCustomerArray=myCustomer.split("|");//splitting the customer info
+			var firstname=myCustomerArray[0]; 
+			var wireArtId=myCustomerArray[1].trim();
+			document.getElementById(wireArtId).checked = true;//displaying the redio buttton of selected artId is checked 
+			var wireArtName = myCustomerArray[2];
+			var wireArtPrice = myCustomerArray[3];
+			var wireArtPricetrim = parseFloat(wireArtPrice.trim().substring(1)); //using parsefloat to compute the discounted price 
+			var priceAfterDiscount = (wireArtPricetrim - (wireArtPricetrim*0.1));
+			var welcomeString = "Welcome back, " + firstname + ". Because you returned to our site soon, we are offering you a 10% discount on "+ wireArtName + ". Your price is now only $" + priceAfterDiscount + " if you place your order right away." //welcome string for the customer after he visited  the website 15 minutes later
+			document.getElementById("offer").innerHTML = welcomeString;//Building  up the output string welcoming the user back
+		}
+	
+	</script>
+</body>
+</html>

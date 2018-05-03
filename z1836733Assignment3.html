@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<!--
+ 
+    Saikeerthi Tsundupalli 
+	OMIS 694
+	March 08, 2018
+	Impressions Fine Art Gallery website.
+-->
+<head>
+    <title>Impressions Fine Art Gallery</title>
+	<script>
+         function enlarge(imageName) {
+         var afterEnlarge="";
+         afterEnlarge+= "<img src="+imageName+" />";
+         document.getElementById("largeimage").innerHTML =afterEnlarge;
+
+         }
+		 </script>
+    <Style>
+    body{
+         font-family:arial;
+         font-weight:bold;
+         color: white;
+         background-color: black;
+         padding-top: 10px;
+		 }
+	#largeimage{
+         position: absolute;
+         top:140px;
+         left:500px;
+         width: 400px;
+         height: 267px;
+         border: 2px solid white;
+         } 
+
+    .img{
+         height:80px;
+         width:120px
+        }
+
+    .title{
+         text-align:center;
+         font-size:small;
+         }
+	
+    
+    img:hover{
+	    -webkit-transform: scale(2,2);
+        }
+    </Style>
+    
+    
+</head>
+
+    <body>
+	
+     Artist:Richard Born <br>
+     Medium:Photography
+     <br/><br/>
+     <p id="largeimage"> <img src="GoodNightMrSun.jpg"/></p>
+     <table>
+     <tr>
+     <td>
+     <div class="title">Buttercup</div>
+     <img src="Buttercup.jpg" class="img" onClick="enlarge('Buttercup.jpg');"/>
+     </td>
+     <td>
+     <div class="title">Bluebells</div>
+     <img src="Bluebells.jpg" class="img" onClick="enlarge('Bluebells.jpg');"/>
+     </td>
+
+     <td>
+     <div class="title">Siberiansquill</div>
+     <img src="Siberiansquill.jpg" class="img" onClick="enlarge('Siberiansquill.jpg');"/>
+     </td>
+     </tr>
+     <tr>
+
+     <td>
+     <div class="title">Fishin'Morn'</div>
+     <img src="FishinMorn.jpg" class="img" onClick="enlarge('FishinMorn.jpg');"/>
+     </td>
+	 <td>
+     <div class="title">Sun Worshipers</div>
+     <img src="GoodNightMrSun.jpg" class="img" onClick="enlarge('GoodNightMrSun.jpg');"/>
+     </td>
+     <td>
+     <div class="title">BeachSunrise</div>
+     <img src="BeachSunrise.jpg" class="img" onClick="enlarge('BeachSunrise.jpg');"/>
+     </td>
+     </tr>
+     <tr>
+     <td>
+     <div class="title">Land and Sky</div>
+     <img src="LandAndSky.jpg" class="img" onClick="enlarge('LandAndSky.jpg');"/>
+     </td>
+     <td>
+     <div class="title">Winter Abstract</div>
+     <img src="WinterAbstract.jpg" class="img" onClick="enlarge('WinterAbstract.jpg');"/>
+     </td>
+     <td>
+     <div class="title">SpaceTimeWarp</div>
+     <img src="SpaceTimeWarp.jpg" class="img" onClick="enlarge('SpaceTimeWarp.jpg');"/>
+     </td>
+     </tr>
+
+</table>
+<p>Click a thumbnail Image to see it enlarged. </p>
+
+</body>
+
+
+</html>

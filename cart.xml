@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<shopping_cart>
+<item id="3081502">
+	<product_name>Newton's Cradle 7"</product_name>
+	<unit_price>19.95</unit_price>
+	<quantity>3</quantity>
+</item>
+<item id="3152763">
+	<product_name>Sphero</product_name>
+	<unit_price>129.99</unit_price>
+	<quantity>1</quantity>
+</item>	
+<item id="3060082">
+	<product_name>Radiometer</product_name>
+	<unit_price>11.95</unit_price>
+	<quantity>3</quantity>
+</item>
+<item id="3053546">
+	<product_name>Executive Laser Pointer</product_name>
+	<unit_price>19.95</unit_price>
+	<quantity>1</quantity>
+</item>
+<item id="3035269">
+	<product_name>Liquid-Filled Compass</product_name>
+	<unit_price>15.95</unit_price>
+	<quantity>5</quantity>
+</item>
+<item id="6683801">
+	<product_name>Cube-O-Grams</product_name>
+	<unit_price>4.95</unit_price>
+	<quantity>7</quantity>
+</item>
+</shopping_cart>

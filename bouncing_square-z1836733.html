@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<!--
+	Saikeerthi Tsundupalli
+	OMIS 694
+	March 26, 2018
+	Bouncing squares.
+-->
+<head>
+	<title>Bouncing Square</title>
+	<style>
+		body {
+			font-family: Arial;
+			background-color: white;
+			}
+		#container {
+			position: relative;
+			width: 700px;
+			height: 500px;
+			border: solid black 2px;
+			background-color: red;
+		}
+		#square {
+			position: absolute;
+			width: 21px;
+			height: 21px;
+			border: solid white 2px;
+			background-color: black;
+			left: 300px;
+			top: 0px:
+		}
+	</style>
+</head>
+<body>
+	<center>
+		<div id="container">
+			<div id="square">
+			</div>
+		</div>
+		<br /><br />
+		<input type="button" id="stop" value="Stop" />
+		<input type="button" id="resume" value="Resume" />
+		<br /><br />
+		Speed:&nbsp;&nbsp;&nbsp; 
+		<input id="slow" type="radio" name="speed" value="slow">Slow
+		&nbsp;&nbsp;&nbsp;
+		<input id="medium" type="radio" name="speed" value="medium" 
+			   checked>Medium&nbsp;&nbsp;&nbsp;
+		<input id="fast" type="radio" name="speed" value="fast">Fast
+		&nbsp;&nbsp;&nbsp;
+	</center>
+	<script>
+//initializing and declaring the values of the variables 		
+		var timer = null;
+		var elem = null;
+		var right = 1; // the square ball will move to the right
+		var left = -1; // the square ball will move to the left
+		var dir = right; // declaring initial direction to the right 
+		var numPixels = 1;  //  number of pixels per iteration
+		var speed = 12;
+//declaring variables for defining the dimensions of rectangle 
+var minimum_x = 0;
+var minimum_y = 0;
+var width = 700;
+var height = 500;
+var maximum_x = minimum_x + width - 1;
+var maximum_y = minimum_y + height - 1;
+ //declaring variables for defining the dimensions of square box
+
+var square_Rad = 10;
+var square_Size = square_Rad*2 +1;
+// Initial speed of the square box
+var square_SpeedX = 8;
+var square_SpeedY = 6;
+// placing the ball randomly in the initial position 
+var square_X = (width - 2*square_Size)*Math.random() + (minimum_x + square_Size);
+var square_Y = (height - 2*square_Size)*Math.random() + (minimum_y + square_Size);
+	
+// defining a function bouncing square  		
+        function bouncingSquare() {
+		objResume.style.display = "none";
+		objStop.style.display = "block";
+		
+   square_X = square_X+square_SpeedX;
+   square_Y = square_Y+square_SpeedY;
+   context = document.getElementById("square");
+   context.style.left = (square_X - square_Rad) + "px";
+   context.style.top  = (square_Y - square_Rad) + "px";
+   // Checking  whether the square is moving  over the bounds
+
+   if (square_X + square_Rad > maximum_x) {
+      square_SpeedX = -square_SpeedX; // Reflecting the square along the normal-x axis
+      square_X = maximum_x - square_Rad; // Re-positioning  the ball at the edges of the rectangular box
+   } else if (square_X - square_Rad < minimum_x) {
+      square_SpeedX = -square_SpeedX;
+      square_X = minimum_x + square_Rad;
+   }
+   
+   if (square_Y + square_Rad > maximum_y) {
+      square_SpeedY = -square_SpeedY;//Reflecting the square along the normal-y axis
+      square_Y = maximum_y - square_Rad;//Re-positioning  the ball at the edges of the rectangular box
+   } else if (square_Y - square_Rad < minimum_y) {
+      square_SpeedY = -square_SpeedY;
+      square_Y = minimum_y + square_Rad;
+   }
+ //calling the function recursively  after the defined  milli seconds 
+  timer = setTimeout("bouncingSquare()", speed);	
+		}
+		function stopSquare() {
+			clearInterval(timer);
+		// Turning  off the stop button and showing  the Resume button
+			objResume.style.display = "block";
+			objStop.style.display = "none";
+		}
+		function adjustSpeed(pace) {
+			speed = pace;
+		}
+		
+		window.onload = function() {
+			// Setting up event handlers for the buttons resume and stop
+			objResume = document.getElementById("resume")
+			objResume.onclick = function() {bouncingSquare();}
+			objStop = document.getElementById("stop")
+			objStop.onclick = function() {stopSquare();}
+			// Setting up the  event handlers for the slow,medium and fast buttons
+			objSlow = document.getElementById("slow")
+			objSlow.onclick = function() {adjustSpeed(16);}
+			objMedium = document.getElementById("medium")
+			objMedium.onclick = function() {adjustSpeed(8);}
+			objFast = document.getElementById("fast")
+			objFast.onclick = function() {adjustSpeed(6);}
+			
+			
+			// Getting the square object
+			elem = document.getElementById("square");
+			elem.style.width = square_Size + "px";
+			elem.style.height = square_Size + "px";
+			elem.style.left = (square_X - square_Rad) + "px";//positioning the square box in left 
+			elem.style.top  = (square_Y - square_Rad) + "px";
+			
+			bouncingSquare();//calling the bouncing square function
+			
+			element = document.getElementById("container");
+            element.style.width = width + "px";
+			element.style.height = height + "px";
+		}
+	</script>
+</body>
+</html>

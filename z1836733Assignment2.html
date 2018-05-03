@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<!--
+	Saikeerthi Tsundupalli
+	OMIS 694
+	Feb 26, 2018
+	Assignment- 02- Better Beds, Inc. Employment Report.
+	-->
+
+<head>
+<title>Better Beds, Inc. Employment Report</title>
+<h1>Better Beds, Inc.</h1>
+<h2>Employment Report</h2>
+<script src="neatdate.js"></script>
+<script src="roundPlaces.js"></script>
+<script src="DaysBetween.js"></script>
+<script>
+function Salesperson(name, dateOfHire,annualSalary)
+{
+this.name=name;
+this.dateOfHire=dateOfHire;
+this.annualSalary=annualSalary;
+this.PrintSalesperson=function(){
+line1 = "<br /><b>Name: </b>" + this.name + "<br />";
+line2 = "<b>Date of hire: </b>" + this.dateOfHire + "<br />";
+line3 = "<b>YearlySalary: </b>" + this.annualSalary + "<hr />\n";
+document.write(line1+line2+line3);
+}
+this.TotalAnnualSalary = function() {
+				TotalSalary +=this.annualSalary;
+				if (annualSalary > 75000) {
+						count++;   
+
+}
+}
+}
+</script>
+</head>
+<body>
+<h3>Report Date:</h3>
+
+ <script>
+
+var now=new Date();
+var TotalSalary = 0;
+var count = 0;
+var totalEmploymentYears = 0;
+document.write(NeatDate(now));
+
+salesPeople = new Array();  //Initializing and giving data to the Array.
+			salesPeople[0] = new Salesperson("Dorothy Engel", "June 23, 2003", 77850.51);
+			salesPeople[1] = new Salesperson("Mark Faivre", "August 15, 2007", 69355.77);
+			salesPeople[2] = new Salesperson("Kenny Jahns", "January 1, 1995", 85430.53);
+			salesPeople[3] = new Salesperson("James Perez", "April 30, 2010", 53500.23);
+			salesPeople[4] = new Salesperson("Ralph Bowers", "November 20, 2005", 72915.56);
+			salesPeople[5] = new Salesperson("Cynthia Vaughn", "October 17, 1991", 93375.12);
+			
+            for (i in salesPeople) {salesPeople[i].PrintSalesperson();}
+				                                    // Using for loop to  display the salesperson details.
+			
+		    for (i in salesPeople) {                 // Using for loop to calculate the total salary.
+				salesPeople[i].TotalAnnualSalary();
+					}
+			salaryDetails="<br /><b>Total Salary paid to all salespeople : <br />" + TotalSalary + "</b>";
+			document.write(salaryDetails);
+			
+			for (i in salesPeople) {    // Using for loop to calculate the total employment years by iterating through salesPeople array.
+				daysBetween(salesPeople[i].dateOfHire);
+				}
+				
+			//displays salesperson employment years & number of salespeople eligible for bonus.
+			document.write("<br /><br /><b>Total number of salesperson employment years: <br />" + roundPlaces(totalEmploymentYears, 2) + "</b>");
+			document.write("<br /><br /><b>Count of salespeople eligible for bonus: <br />" + count +"</b>");
+			
+			
+    
+</script>
+</body>
+</html>
